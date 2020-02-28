@@ -1,0 +1,28 @@
+<div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm" style="background-color: #FBE8A6;">
+  <span style="font-size: 48px; color:#F4976C;">
+    <i class="mr-3 fas fa-map-marker-alt"></i>
+  </span>
+  <mat-toolbar>
+    <h6 class="mb-1 lh-100" style="color: #303C6C; font-weight: 800;">โมดูล</h6>
+    <small style="color: #303C6C; font-weight: 800;">จัดการโมดูลระบบ</small>
+  </mat-toolbar>
+</div>
+<br>
+
+ 
+<table datatable class="table row-border hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>โมดูล</th>
+      <th>สถานะ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of empData">
+      <td>{{ emp.moduleID }}</td>
+      <td>{{ emp.moduleName }}</td>
+      <td>{{ emp.is_enable }}</td>
+    </tr>
+  </tbody>
+</table>
