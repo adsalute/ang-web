@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    DataTablesModule,
+    DataTablesModule
   ],
   providers: [
     { provide: 'API_URL', useValue: environment.apiUrl },

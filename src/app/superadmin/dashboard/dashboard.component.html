@@ -9,20 +9,24 @@
 </div>
 <br>
 
- 
-<table datatable class="table row-border hover">
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>โมดูล</th>
-      <th>สถานะ</th>
+      <th>moduleID</th>
+      <th>moduleName</th>
+      <th>used</th>
+      <th>action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let emp of empData">
-      <td>{{ emp.moduleID }}</td>
-      <td>{{ emp.moduleName }}</td>
-      <td>{{ emp.is_enable }}</td>
+    <tr *ngFor="let data of datas; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ data.moduleName }}</td>
+      <td>{{ data.is_enable }}</td>
+      <td><button mat-button (click)="openEditbox(content)" class="btn btn-info edits"><mat-icon>create</mat-icon></button><button mat-button class="btn btn-danger del" (click)="doRemove(data)"><mat-icon>delete</mat-icon></button></td>
     </tr>
   </tbody>
-</table>
+  </table>
+  
+  <app-modal-module></app-modal-module>
+ 

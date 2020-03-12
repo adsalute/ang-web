@@ -1,11 +1,10 @@
-table {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-width: 500px;
-}
-
-th.mat-header-cell {
-  text-align: center;
-  max-width: 300px;
-}
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+  }
+  .dark-modal .close {
+    color: white;
+  }
+  .light-blue-backdrop {
+    background-color: #5cb3fd;
+  }

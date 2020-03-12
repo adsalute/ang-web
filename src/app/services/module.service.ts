@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-
-
+import { HttpClient } from '@angular/common/http';
+import { ResDataModal } from './../models/resDataModal';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,24 @@ export class ModuleService {
     ) { }
 
   listAll(){
-    const _url = `${this.apiUrl}/modules/all`;
-    return this.http.get(_url)
+    const url = `${this.apiUrl}/modules/all`;
+    return this.http.get(url)
     .toPromise();
   }
 
-  getmodes(){
+  getmodes(): Observable<ResDataModal>{
     const url = `${this.apiUrl}/modules/getmodes`;
-    return this.http.get(url)
+    return this.http.get<ResDataModal>(url);
+  }
+
+  savemode(){
+    const url = `${this.apiUrl}/modules/create`;
+    return this.http.post(url);
+  }
+
+  delmode(moduleID: any){
+    const url = `${this.apiUrl}/modules/${moduleID}`;
+    return this.http.delete(url)
     .toPromise();
   }
 

@@ -1,3 +1,4 @@
+import { ModalModuleComponent } from './../share/modal-module/modal-module.component';
 import { AppComponent } from './app/app.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,8 +14,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ModuleService } from './../services/module.service';
 import { MaterialModule } from './../material.module';
 
-
-
+import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { MaterialModule } from './../material.module';
   declarations: [
     LayoutComponent,
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ModalModuleComponent,
+
   ],
 
   imports: [
@@ -30,10 +33,13 @@ import { MaterialModule } from './../material.module';
     SuperadminRoutingModule,
     HttpClientModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    DataTablesModule,
+    NgbModule
   ],
 
-  exports: [],
+  exports: [
+  ],
   providers: [ ModuleService ]
 })
 export class SuperadminModule { }
