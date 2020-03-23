@@ -1,9 +1,9 @@
 import { ModalModuleComponent } from './../../share/modal-module/modal-module.component';
 import { ModuleService } from './../../services/module.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, enableProdMode } from '@angular/core';
+import { Component, OnInit, enableProdMode, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 import 'rxjs/add/operator/map';
 
@@ -25,12 +25,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private moduleService: ModuleService,
-    private modalService: NgbModal,
+    private modalbox: ModalModuleComponent
   ) { }
 
 
 
-  ngOnInit() {
+ async ngOnInit() {
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
       ]
     };
 
-    this.getModes();
+    await this.getModes();
   }
 
   async doRemove(data: any) {
@@ -58,9 +58,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  openEditbox(content) {
-    this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
-  }
+
 
   async getModes() {
     try {

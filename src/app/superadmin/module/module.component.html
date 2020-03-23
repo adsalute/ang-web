@@ -1,45 +1,35 @@
-<div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm" style="background-color: #FBE8A6;">
-    <span style="font-size: 48px; color:#F4976C;">
-      <i class="mr-3 fas fa-map-marker-alt"></i>
-    </span>
-    <div class="lh-100">
-      <h6 class="mb-1 lh-100" style="color: #303C6C; font-weight: 800;">โมดูล</h6>
-      <small style="color: #303C6C; font-weight: 800;">จัดการโมดูลระบบ</small>
-    </div>
+<div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight" mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
-  
-  <button class="btn" style="background-color: #303C6C;">
-    <span style="font-size: 16px; color:white;">
-      <i class="mr-3 fas fa-plus-circle"></i> เพิ่มโมดูล
-    </span>
-  </button>
-  
-  <table class="table hover">
-    <thead>
-      <tr>
-        <th>ชื่อโมดูล</th>
-        <th style="width: 120px;">สถานะ</th>
-        <th style="width: 120px;">#</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td>{{ item.moduleName }}</td>
-        <td>
-            <i class="fas fa-eye" style="color: green;" *ngIf="item.is_enable === 'Y'"></i>
-            <i class="fas fa-eye-slash" style="color: red;" *ngIf="item.is_enable === 'N'"></i>
-        </td>
-        <td>
-          <div class="btn-group">
-            <button class="btn btn-primary">
-              <i class="fas fa-pencil-alt"></i>
-            </button>
-            <button class="btn btn-danger">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
   

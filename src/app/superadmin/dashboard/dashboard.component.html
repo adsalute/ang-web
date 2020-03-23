@@ -23,7 +23,7 @@
       <td>{{ i+1 }}</td>
       <td>{{ data.moduleName }}</td>
       <td>{{ data.is_enable }}</td>
-      <td><button mat-button (click)="openEditbox(content)" class="btn btn-info edits"><mat-icon>create</mat-icon></button><button mat-button class="btn btn-danger del" (click)="doRemove(data)"><mat-icon>delete</mat-icon></button></td>
+      <td><button mat-button (click)="openbox(mymodal)" class="btn btn-info edits"><mat-icon>create</mat-icon></button><button mat-button class="btn btn-danger del" (click)="doRemove(data)"><mat-icon>delete</mat-icon></button></td>
     </tr>
   </tbody>
   </table>

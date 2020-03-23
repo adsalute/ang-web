@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { SuperadminRoutingModule } from './superadmin-routing.module';
 
 import { LayoutComponent } from './layout/layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -15,7 +15,8 @@ import { ModuleService } from './../services/module.service';
 import { MaterialModule } from './../material.module';
 
 import { DataTablesModule } from 'angular-datatables';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModuleComponent } from './module/module.component';
+
 
 
 @NgModule({
@@ -23,8 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     LayoutComponent,
     AppComponent,
-    DashboardComponent,
     ModalModuleComponent,
+    ModuleComponent
 
   ],
 
@@ -34,8 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    DataTablesModule,
-    NgbModule
+    DataTablesModule
   ],
 
   exports: [
