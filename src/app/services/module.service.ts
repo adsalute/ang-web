@@ -1,29 +1,38 @@
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
-import 'rxjs/add/operator/map';
-
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModuleService {
 
-  constructor(
-    private http: HttpClient,
-    @Inject('API_URL') private apiUrl: string
-    ) { }
+  constructor(private http: HttpClient) { }
 
-  listAll(){
-    const url = `${this.apiUrl}/modules/all`;
-    return this.http.get(url)
-    .toPromise();
+  public getData = (route: string) =>{
+    return this.http.get(this.createCompleteRoute(route, environment.apiUrl));
   }
 
-  delmode(moduleID: any){
-    const url = `${this.apiUrl}/modules/${moduleID}`;
-    return this.http.delete(url)
-    .toPromise();
+  public create = (route: string, body) => {
+    return this.http.post(this.createCompleteRoute(route, environment.apiUrl), body, this.generateHeaders());
+  }
+ 
+  public update = (route: string, body) => {
+    return this.http.put(this.createCompleteRoute(route, environment.apiUrl), body, this.generateHeaders());
+  }
+ 
+  public delete = (route: string) => {
+    return this.http.delete(this.createCompleteRoute(route, environment.apiUrl));
+  }
+ 
+  private createCompleteRoute = (route: string, envAddress: string) => {
+    return `${envAddress}/${route}`;
+  }
+
+  private generateHeaders = () => {
+    return {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
   }
 
 }

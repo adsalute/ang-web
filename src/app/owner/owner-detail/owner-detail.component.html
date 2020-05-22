@@ -1,0 +1,29 @@
+ <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">รายละเอียดบุคคล ...</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="d-flex justify-content-center">
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+       
+              <div><label><strong>รหัสประจำตัวประชาชน :</strong></label> {{ personID }}</div>
+              <div><label><strong>เลขที่เงินเดือน :</strong></label> {{ payrollID }}</div>
+              <div><label><strong>ชื่อ :</strong></label> {{ firstName }}</div>
+              <div><label><strong>นามสกุล :</strong></label> {{ lastName }}</div>
+              <div><label><strong>email :</strong></label> {{ email }}</div>
+              <div><label><strong>Active :</strong></label> {{ active }}</div>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">close</button>
+    </div>
+    <div id="closeResult"></div>
+    
+  </ng-template>

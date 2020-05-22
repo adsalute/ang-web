@@ -12,17 +12,31 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
-import { UsertableComponent } from './components/usertable/usertable.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ApiService } from './services/api.service';
-import { UserService } from './services/user.service';
+import { ErrorDialogComponent } from './share/dialogs/error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from './share/dialogs/success-dialog/success-dialog.component';
+import { LayoutComponent } from './layout/layout.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { InternalServerComponent } from './share/internal-server/internal-server.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UsertableComponent,
+    ErrorDialogComponent,
+    SuccessDialogComponent,
+    LayoutComponent,
+    HomeComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    InternalServerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,14 +46,18 @@ import { UserService } from './services/user.service';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    DataTablesModule,
+    ToastrModule.forRoot()
+  ],
+  exports: [
+    MaterialModule
   ],
   providers: [
-    { provide: 'API_URL', useValue: environment.apiUrl },
-    ApiService,
-    UserService
+    { provide: 'API_URL', useValue: environment.apiUrl }
   ],
   bootstrap: [AppComponent],
-  schemas: [ NO_ERRORS_SCHEMA ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

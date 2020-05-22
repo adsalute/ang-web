@@ -1,5 +1,4 @@
 import { ModalModuleComponent } from './../../share/modal-module/modal-module.component';
-import { ModuleService } from './../../services/module.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, enableProdMode, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -24,7 +23,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private moduleService: ModuleService,
     private modalbox: ModalModuleComponent
   ) { }
 
@@ -41,9 +39,9 @@ export class DashboardComponent implements OnInit {
       ]
     };
 
-    await this.getModes();
+    //await this.getModes();
   }
-
+/*
   async doRemove(data: any) {
     try {
       const rs: any = await this.moduleService.delmode(data.moduleID);
@@ -72,6 +70,6 @@ export class DashboardComponent implements OnInit {
       console.log('error: ' + err);
     }
   }
-
+*/
 }
 

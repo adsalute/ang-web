@@ -16,6 +16,8 @@ import { MaterialModule } from './../material.module';
 
 import { DataTablesModule } from 'angular-datatables';
 import { ModuleComponent } from './module/module.component';
+import { ModalUserComponent } from '../share/modal-user/modal-user.component';
+import { UserService } from '../services/user.service';
 
 
 
@@ -25,7 +27,8 @@ import { ModuleComponent } from './module/module.component';
     LayoutComponent,
     AppComponent,
     ModalModuleComponent,
-    ModuleComponent
+    ModuleComponent,
+    ModalUserComponent
 
   ],
 
@@ -40,6 +43,7 @@ import { ModuleComponent } from './module/module.component';
 
   exports: [
   ],
-  providers: [ ModuleService ]
+  providers: [ ModuleService, UserService ],
+  entryComponents:[ModalUserComponent]
 })
 export class SuperadminModule { }

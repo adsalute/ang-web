@@ -1,0 +1,15 @@
+.icon-2x {
+    transform: scale(2);
+}
+
+.icon-3x {
+    transform: scale(3);
+}
+
+.icon-4x {
+    transform: scale(4);
+}
+
+.icon-5x {
+    transform: scale(5);
+}

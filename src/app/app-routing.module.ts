@@ -1,12 +1,17 @@
-import { UsertableComponent } from './components/usertable/usertable.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+
+import { HomeComponent } from './home/home.component';
+import { OwnerModule } from './owner/owner.module';
+import { InternalServerComponent } from './share/internal-server/internal-server.component';
+
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'users', component: UsertableComponent},
-  { path: 'admin', loadChildren: './superadmin/superadmin.module#SuperadminModule'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
+  { path: 'owner', loadChildren: "./owner/owner.module#OwnerModule"},
+  { path: '**', component: InternalServerComponent},
+  
 ];
 
 @NgModule({

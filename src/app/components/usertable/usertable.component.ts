@@ -1,49 +1,59 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalUserComponent } from './../../share/modal-user/modal-user.component';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-usertable',
   templateUrl: './usertable.component.html',
   styleUrls: ['./usertable.component.css']
 })
-export class UsertableComponent implements OnInit{
+export class UsertableComponent implements OnInit, AfterViewInit{
 
-  displayedColumns = ['name', 'email', 'update', 'delete'];
-  dataSource: MatTableDataSource<User>;
+  public displayedColumns = ['firstName', 'lastName', 'email', 'update', 'delete'];
+  public dataSource = new MatTableDataSource<User>();
 
-  @ViewChild('MatPaginator', {static: true}) paginator: MatPaginator;
-  @ViewChild('MatSort', {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  searchKey: string;
+  public users;
   constructor(
     private userService: UserService,
-    private router: Router
+    private diaglog: MatDialog
     ) { }
 
   ngOnInit() {
-    this.getUsers();
-    this.dataSource = new MatTableDataSource();
-    this.dataSource.paginator = this.paginator;
+  
+  }
+
+  ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  public redirectToUpdate = (id: string) => {
+    
+  }
+ 
+  public redirectToDelete = (id: string) => {
+    
   }
 
-  getUsers() {
-    this.userService.getUsers().subscribe((data: any) => {
-      console.log(data);
-      this.dataSource.data = data; // on data receive populate dataSource.data array
-      return data;
-   });
+  doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+
+  openDialog() {
+  const dialogConfig = new MatDialogConfig();
+
+    this.diaglog.open(ModalUserComponent, dialogConfig);
+
+    
+  }
+ 
 
 }

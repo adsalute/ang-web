@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<!--<mat-sidenav-container>
     <mat-sidenav  #sidenav role="navigation">
      <mat-nav-list>
       <a mat-list-item>
@@ -69,20 +69,21 @@
         <router-outlet></router-outlet>
       </main>
     </mat-sidenav-content>
+  </mat-sidenav-container>-->
+
+<!--<router-outlet></router-outlet>-->
+<app-layout>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header> 
+      <app-modal-user></app-modal-user>
+      <main>
+        <router-outlet></router-outlet>
+       
+      </main>
+    </mat-sidenav-content>
   </mat-sidenav-container>
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-
-<div fxLayout='column' class="zero">
-
-  <div fxFlex="33" class="one" ></div>
-  <div fxFlex="33%" [fxLayout]="direction" class="two">
-
-    <div fxFlex="22%"    class="two_one"></div>
-    <div fxFlex="205px"  class="two_two"></div>
-    <div fxFlex="30"     class="two_three"></div>
-
-  </div>
-  <div fxFlex class="three"></div>
-
-</div>
-<router-outlet></router-outlet>
+</app-layout>
