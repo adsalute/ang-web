@@ -1,8 +1,17 @@
 <app-menu></app-menu>
 <div class="row">
-  <div class="col-md-offset-10 col-md-2">
-    <button type="button" id="createuser" class="btn btn-success btn-sm" (click)="openModalForm(user)">Create
+  <div class="col-md-8">
+    <button type="button" id="createuser" class="btn btn-success" (click)="openModalForm(user)">Create
       User</button>
+  </div>
+  <div class="col-md-4 form-inline text-right">
+    <div class="input-group">
+      <input type="text" name="query" placeholder="ค้นหา..." id="query" class="form-control" [(ngModel)]="query"
+        (keyup)=doSearch()>
+    </div>
+    <div class="input-group-append">
+      <button type="button" id="button2" class="btn btn-info" (click)="doSearch()">ค้นหา</button>
+    </div>
   </div>
 </div>
 <br>
@@ -41,12 +50,16 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-2"> 
-    <select name="changepageSize" id="changepageSize" class="form-control" [(ngModel)]="pageSize" (change) ="getAllData()">
+  <div class="col-md-2">
+    <select name="changepageSize" id="changepageSize" class="form-control" [(ngModel)]="pageSize"
+      (change)="getAllData()" style="width:auto;">
       <option *ngFor="let option of optionsPage" [value]="option">{{option}}</option>
-    </select></div>
-  <ngb-pagination class="d-flex justify-content-end" (pageChange)="onPageChange($event)" [collectionSize]="total"
-    [pageSize]="pageSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+    </select>
+  </div>
+  <div class="col-md-10">
+    <ngb-pagination class="d-flex justify-content-end" (pageChange)="onPageChange($event)" [collectionSize]="total"
+      [pageSize]="pageSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+  </div>
 </div>
 <app-owner-detail #mdlDetailUser></app-owner-detail>
 <app-owner-add #mdlFormUser (saveClick)="saveConfirm($event)"></app-owner-add>

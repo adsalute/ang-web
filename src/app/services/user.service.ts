@@ -19,9 +19,9 @@ export class UserService {
     private http: HttpClient,
     ) { }
 
-  getUserAll(limit: number, offset: number) {
+  getUserAll( query: any, limit: number, offset: number) {
     const apiUrl = environment.apiUrl+"/users";
-    return this.http.get(`${apiUrl}?limit=${limit}&offset=${offset}`);
+    return this.http.get(`${apiUrl}?query=${query}&limit=${limit}&offset=${offset}`);
   }
 
 

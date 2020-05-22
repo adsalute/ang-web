@@ -24,6 +24,7 @@ export class OwnerListComponent implements OnInit {
 
     limit: any = 0;
     offset: any = 0;
+    query: any = '';
 
     optionsPage = ['10', '20', '30', '40', '50'];
 
@@ -37,14 +38,18 @@ export class OwnerListComponent implements OnInit {
   }
 
   async getAllData() {
-    await this.user.getUserAll(this.pageSize, this.offset)
+    await this.user.getUserAll(this.query, this.pageSize, this.offset)
     .toPromise()
     .then((rs: any) => {
+      if(rs.status) { 
         this.users = rs.datas.rows;
         this.total = rs.datas.count;
+      } else {
+        this.showToasterError(rs.error, "System Maseage");
+      }
     })
     .catch((e) => {
-      console.log(e);
+      this.showToasterError(e, "System Maseage");
     });
   }
 
@@ -58,6 +63,10 @@ export class OwnerListComponent implements OnInit {
     this.offset = _offset;
     this.limit = this.pageSize;
     await this.getAllData();
+  }
+
+  doSearch() {
+    this.getAllData();
   }
 
 
